@@ -3,5 +3,98 @@ body{
   }
 
 #main-canvas{
-    z-index:-1;
+    z-index:0;
+    position: absolute;
+
+}
+
+#wrapper{
+    z-index: 10;
+    position: absolute;
+    left:10%;
+    top:10%;
+}
+
+h1, nav li a,footer{
+    text-indent: -999px;
+    overflow: hidden;
+    display: block;
+    background-image: url("res.png");
+    background-size: 800px 270px;
+    background-repeat: no-repeat;
+}
+
+nav li{
+    list-style: none;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+nav li a{
+    height: 46px;
+}
+
+nav li a:hover{
+    background-position-y: -190px;
+    cursor: pointer;
+}
+
+li.blog a{
+    width: 88px;
+    background-position: -4px -144px;
+}
+
+li.zhihu a{
+    width: 88px;
+    background-position: -90px -144px;
+}
+
+li.weibo a{
+    width: 88px;
+    background-position: -178px -144px;
+}
+
+li.twitter a{
+    width: 122px;
+    background-position: -266px -144px;
+}
+
+li.github a{
+    width: 122px;
+    background-position: -388px -144px;
+}
+
+li.bitbucket a{
+    width: 168px;
+    background-position: -510px -144px;
+}
+
+li.dota a{
+    width: 94px;
+    background-position: -678px -144px;
+}
+
+nav ul{
+    padding: 0 0 0 4px;
+}
+
+h1{
+    width: 300px;
+    height: 72px;
+    background-position: 0px 0px;
+}
+
+h1:hover{
+    background-position: 0px -72px;
+    cursor: pointer;
+}
+
+footer{
+    width: 450px;
+    height: 80px;
+    position: absolute;
+    bottom: 5%;
+    left:10%;
+    background-position: 0px -235px;
 }
