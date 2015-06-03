@@ -1,0 +1,7 @@
+body{
+  overflow: hidden;
+  }
+
+#main-canvas{
+    z-index:-1;
+}

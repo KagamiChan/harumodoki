@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="assets/normalize.css" rel="stylesheet" type="text/css">
+    <link href="assets/style.css" rel="stylesheet" type="text/css">
+    <meta name="keyword" content="明镜止水,个人主页,Homepage,HP">
+    <meta name="author" content="明镜止水">
+    <meta name="description" content="明镜止水的个人主页">
+    <title>明镜止水::春擬き</title>
+</head>
+<body>
+
+<canvas id="main-canvas"></canvas>
+<h1></h1>
+
+<script type="text/javascript">
+    // Inspired by http://evanyou.me/, special thanks to his code
+    // document.addEventListener('touchmove', function (e) {
+    //     e.preventDefault()
+    // })
+
+    var canvas = document.getElementById("main-canvas"),
+    ctx = canvas.getContext("2d"),
+    c = Math.cos,
+    at2 = Math.atan2,
+    s = Math.sin,
+    z = Math.random,
+    ii = 0
+
+    function init(){
+        var pr = window.devicePixelRatio || 1,
+        w = window.innerWidth,
+        h = window.innerHeight
+
+        canvas.width = w * pr
+        canvas.height = h * pr
+        ctx.scale(pr,pr)
+        ctx.globalAlpha = 0.25
+
+
+        ctx.clearRect(0,0,w,h)
+        var colorList = ['#00aeef','#f68e56','#8dc63f','#f06eaa']
+        index = Math.floor(z()*4)
+        for (j=0; j<30;j++) {
+            draw(0.5*w + w* s(z()-0.5),h * z(),0.02*h+ 0.02*w * z(), 360 * z(), colorList[index])
+        }
+    }
+
+    function draw(x0,y0,r,theta,style){
+        ctx.beginPath()
+        for (i=0;i<5;i++){
+            a0 = (theta + 72 *i)/180 * Math.PI
+            a1 = (theta + 72 *i + 72)/180 * Math.PI
+            a0x = x0 + r * c(a0)
+            a0y = y0 + r * s(a0)
+            center_x = x0 + 0.5*r*(c(a0) + c(a1))
+            center_y = y0 + 0.5*r*(s(a0) + s(a1))
+            center_r = r * s (36 * Math.PI/180)
+            sa = at2(a0y - center_y,a0x - center_x)
+            ea = sa + Math.PI
+            ctx.arc(center_x,center_y,center_r,sa,ea)
+
+            ii -=Math.PI/20
+        }
+        ctx.closePath()
+        ctx.fillStyle= style
+        ctx.strokeStyle = '#dddddd'
+        ctx.fill();
+        ctx.stroke()
+    }
+
+    document.onclick = init
+    document.ontouchstart = init
+    window.addEventListener('resize',init)
+    init()
+
+</script>
+
+</body>
+</html>
